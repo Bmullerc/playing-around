@@ -5,6 +5,7 @@ import { useState } from 'react'
 export default function Home() {
   const [list, setList] = useState([])
   const [deleted, setDeleted] = useState([])
+  const [color, setColor] = useState("#323232")
 
   const handleClick = (event) => {
     const newClick = {
@@ -44,6 +45,12 @@ export default function Home() {
     setList((prev) => [...prev, redoneCircle])
   }
 
+  const handleChangeColor = (event) => {
+    setColor(event.target.value)
+
+    console.log('batata')
+  }
+
   return (
     <>
       <Head>
@@ -73,25 +80,29 @@ export default function Home() {
           onClick={handleClick}
           className='bg-zinc-300 h-full w-full fixed top-0'>
           <div
-            className='fixed justify-center items-center top-4 w-full z-10 flex gap-2'>
+            className='fixed justify-center items-center top-4 w-full z-10 flex gap-2 font-bold text-zinc-100'>
             <button
               disabled={list.length === 0}
               onClick={handleUndo}
-              className="bg-red-400 py-2 px-3 rounded-md disabled:grayscale hover:opacity-70 hover:scale-95 duration-200 ease-in-out disabled:cursor-not-allowed disabled:hover:scale-100">Undo
+              className="bg-red-500 py-2 px-3 rounded-md disabled:grayscale hover:opacity-70 hover:scale-95 duration-200 ease-in-out disabled:cursor-not-allowed disabled:hover:scale-100">Undo
             </button>
             <button
               disabled={deleted.length === 0}
               onClick={handleRedo}
-              className="bg-red-400 py-2 px-3 rounded-md disabled:grayscale hover:opacity-70 hover:scale-95 duration-200 ease-in-out disabled:cursor-not-allowed disabled:hover:scale-100">Redo
+              className="bg-green-500 py-2 px-3 rounded-md disabled:grayscale hover:opacity-70 hover:scale-95 duration-200 ease-in-out disabled:cursor-not-allowed disabled:hover:scale-100">Redo
             </button>
+            <form className='flex justify-center items-center gap-2 rounded-md py-2 px-3 bottom-8 right-8 fixed cursor-pointer hover:scale-95 transition-all ease-in-out duration-200' style={{backgroundColor: color}} onClick={(e) => e.stopPropagation()}>
+              <label for="color">Change Color</label>
+              <input id="color" type="color" className='hidden' onChange={handleChangeColor} value={color}/>
+            </form>
           </div>
           {list.map((item, index) => (
-            <span key={index} className="bg-red-600 w-6 h-6 rounded-full absolute" style={{ left: item.clientX, top: item.clientY }} />
+            <span key={index} className="w-6 h-6 rounded-full absolute" style={{ left: item.clientX, top: item.clientY, backgroundColor: color}} />
           ))}
         </section>
       </main >
       <footer className='fixed bottom-2 left-0 right-0 text-center pointer-events-none'>
-        <h4 className='text-sm'>Challenge taken from <Link href={"https://www.youtube.com/@fernandev1"} className="hover:text-zinc-400 duration-200 pointer-events-auto">@fernandev1</Link></h4>
+        <h4 className='text-sm'>Challenge from <Link href={"https://www.youtube.com/@fernandev1"} className="hover:text-zinc-400 duration-200 pointer-events-auto">@fernandev1</Link></h4>
       </footer>
     </>
   )
