@@ -1,54 +1,12 @@
 import Head from 'next/head'
 import Link from 'next/link'
-import { useState } from 'react'
 
 export default function Home() {
-  const [list, setList] = useState([])
-  const [deleted, setDeleted] = useState([])
-
-  const handleClick = (event) => {
-    const newClick = {
-      clientX: event.clientX,
-      clientY: event.clientY
-    }
-    setList((prev) => [...prev, newClick])
-  }
-
-  const handleUndo = (event) => {
-    event.stopPropagation()
-
-    if (list.length === 0) return
-
-    const deletedCircle = [...list].pop()
-
-    setList((prev) => {
-      const newList = [...prev].slice(0, -1)
-      return newList
-    })
-
-    setDeleted((prev) => [...prev, deletedCircle])
-  }
-
-  const handleRedo = (event) => {
-    event.stopPropagation()
-
-    if (deleted.length === 0) return
-
-    const redoneCircle = [...deleted].pop()
-
-    setDeleted((prev) => {
-      const newList = [...prev].slice(0, -1)
-      return newList
-    })
-
-    setList((prev) => [...prev, redoneCircle])
-  }
-
   return (
     <>
       <Head>
-        <title>Click Circle Challenge</title>
-        <meta name="description" content="Click Circle Front-end Interview Challenge" />
+        <title>Stoplight Challenge</title>
+        <meta name="description" content="Stoplight Front-end Interview Challenge" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
