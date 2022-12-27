@@ -61,14 +61,14 @@ export default function Home() {
       </Head>
       <main>
         <header className='py-2 px-4 z-20 fixed pointer-events-none'>
-          <h3 className='font-bold text-3xl'>Click Circle Challenge</h3>
-          <ul className='list-inside list-disc'>
-            Create an app that can:
+          <h3 className='font-bold text-3xl mb-2'>Click Circle Challenge</h3>
+          <ul className='list-inside list-disc flex flex-col gap-1 marker:text-zinc-700'>
+            <h4 className='font-medium text-xl'>Create an app that can:</h4>
             <li>Be clicked anywhere inside the page</li>
             <li>Must render a circle in the clicked position</li>
             <li>With every click, the previous circles must be kept, and a new one should be rendered</li>
             <li>Create two functionalities:
-              <ul className='list-inside list-disc px-4'>
+              <ul className='list-inside list-disc px-4 marker:text-zinc-400'>
                 <li>Undo</li>
                 <li>Redo</li>
               </ul>
@@ -91,8 +91,8 @@ export default function Home() {
               onClick={handleRedo}
               className="bg-green-500 py-2 px-3 rounded-md disabled:grayscale hover:opacity-70 hover:scale-95 duration-200 ease-in-out disabled:cursor-not-allowed disabled:hover:scale-100">Redo
             </button>
-            <form className='flex justify-center items-center gap-2 rounded-md py-2 px-3 bottom-8 right-8 fixed cursor-pointer hover:scale-95 transition-all ease-in-out duration-200' style={{backgroundColor: color}} onClick={(e) => e.stopPropagation()}>
-              <label for="color">Change Color</label>
+            <form className='flex justify-center items-center gap-2 rounded-md py-2 px-3 bottom-8 right-8 fixed cursor-pointer hover:scale-95 ease-in-out' style={{backgroundColor: color}} onClick={(e) => e.stopPropagation()}>
+              <label for="color" className='invert' style={{color: color}}>Change Color</label>
               <input id="color" type="color" className='hidden' onChange={handleChangeColor} value={color}/>
             </form>
           </div>
