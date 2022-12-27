@@ -1,4 +1,5 @@
 import Head from 'next/head'
+import Link from 'next/link'
 
 export default function Home() {
   return (
@@ -11,7 +12,8 @@ export default function Home() {
       </Head>
       <main>
         <header>
-          <h2>Front-end Interview Challenges</h2>
+          <h2>Front-end Interview Tips, Tricks and Challenges</h2>
+          <Link href="/challenges">Challenges</Link>
         </header>
       </main>
     </>
