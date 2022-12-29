@@ -1,5 +1,5 @@
 import React from 'react'
-import { PreCode } from '../../../components/PreCode'
+import { PreCode } from './PreCode'
 
 
 export const ShowCircleChallengeCode = () => {
