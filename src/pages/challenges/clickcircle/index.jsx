@@ -2,11 +2,12 @@ import { useState } from 'react'
 import Head from 'next/head'
 import Link from 'next/link'
 import { Modal } from '../../../components/Modal'
-import { ClickCircleHeader } from './header'
 import { Code, Question, X } from "phosphor-react"
 import { motion } from "framer-motion"
 import { ShowCode } from '../../../components/ShowCode'
-import { ShowCircleChallengeCode } from './code'
+import { ShowCircleChallengeCode } from '../../../components/ShowCircleChallengeCode'
+import { ClickCircleHeader } from '../../../components/ClickCircleHeader'
+
 
 export default function Home() {
   const [list, setList] = useState([])
