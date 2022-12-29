@@ -1,19 +1,24 @@
+import { useState } from 'react'
 import Head from 'next/head'
 import Link from 'next/link'
-import { useState } from 'react'
 import { Modal } from '../../../components/Modal'
 import { ClickCircleHeader } from './header'
-import { Question, X } from "phosphor-react"
+import { Code, Question, X } from "phosphor-react"
 import { motion } from "framer-motion"
+import { ShowCode } from '../../../components/ShowCode'
+import { ShowCircleChallengeCode } from './code'
 
 export default function Home() {
   const [list, setList] = useState([])
   const [deleted, setDeleted] = useState([])
   const [color, setColor] = useState("#323232")
   const [modalOpen, setModalOpen] = useState(false)
+  const [codeOpen, setCodeOpen] = useState(false)
 
   const close = () => setModalOpen(false)
   const open = () => setModalOpen(true)
+  const closeCode = () => setCodeOpen(false)
+  const openCode = () => setCodeOpen(true)
 
   const handleClick = (event) => {
     const newClick = {
@@ -67,21 +72,44 @@ export default function Home() {
       </Head>
 
       <main>
-        <motion.button
-          onClick={() => (modalOpen ? close() : open())}
-          whileTap={{ scale: .9, rotate: -180 }}
-          whileHover={{ scale: 1.2, rotate: 180 }}
-          className="duration-75 z-20 fixed bg-zinc-700 rounded-full py-1 px-1 mt-4 ml-4"
-        >
-          {modalOpen ? <X size={24} weight="bold" className="text-zinc-100" /> : <Question size={24} weight="bold" className="text-zinc-100"/>}
-        </motion.button>
+        <div className='flex gap-2 mt-4 ml-4 z-20 fixed'>
+          <motion.button
+            onClick={() => (modalOpen ? close() : open())}
+            disabled={codeOpen}
+            whileTap={{ scale: .9, rotate: -180 }}
+            whileHover={{ scale: 1.2, rotate: 180 }}
+            className="duration-75 bg-zinc-700 rounded-full py-1 px-1 disabled:opacity-0"
+          >
+            {modalOpen ? <X size={24} weight="bold" className="text-zinc-100" /> : <Question size={24} weight="bold" className="text-zinc-100" />}
+          </motion.button>
+
+          <motion.button
+            onClick={() => (codeOpen ? closeCode() : openCode())}
+            disabled={modalOpen}
+            whileTap={{ scale: .9, rotate: -180 }}
+            whileHover={{ scale: 1.2, rotate: 180 }}
+            className="duration-75 bg-zinc-700 rounded-full py-1 px-1 disabled:opacity-0"
+          >
+            {codeOpen ? <X size={24} weight="bold" className="text-zinc-100" /> : <Code size={24} weight="bold" className="text-zinc-100" />}
+          </motion.button>
+        </div>
+        {codeOpen
+          ?
+          <ShowCode handleClose={close}>
+            <ShowCircleChallengeCode />
+          </ShowCode>
+          : null
+        }
 
         {modalOpen
-          &&
+          ?
           <Modal handleClose={close}>
             <ClickCircleHeader />
           </Modal>
+          : null
         }
+
+        {modalOpen & codeOpen ? close() & closeCode() : null}
 
         <section
           onClick={handleClick}
@@ -104,12 +132,12 @@ export default function Home() {
             </form>
           </div>
           {list.map((item, index) => (
-            <span key={index} className="w-6 h-6 rounded-full absolute" style={{ left: item.clientX -10, top: item.clientY -10, backgroundColor: color }} />
+            <span key={index} className="w-6 h-6 rounded-full absolute" style={{ left: item.clientX - 10, top: item.clientY - 10, backgroundColor: color }} />
           ))}
         </section>
       </main >
       <footer className='fixed bottom-2 left-0 right-0 text-center pointer-events-none'>
-        <h4 className='text-sm'>Challenge from <Link href={"https://www.youtube.com/@fernandev1"} className="hover:text-zinc-400 duration-200 pointer-events-auto" style={{color: color}}>@fernandev1</Link></h4>
+        <h4 className='text-sm'>Challenge from <Link href={"https://www.youtube.com/@fernandev1"} className="hover:text-zinc-400 duration-200 pointer-events-auto" style={{ color: color }}>@fernandev1</Link></h4>
       </footer>
     </>
   )
