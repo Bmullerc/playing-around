@@ -1,16 +1,19 @@
 import BackButton from '../components/BackButton'
 import { motion } from "framer-motion"
-import { useState } from 'react'
+import { ReactElement, useState } from 'react'
 import { Modal } from './Modal'
 import { ShowCodeModal } from './ShowCodeModal'
 import { Code, Question, X } from 'phosphor-react'
 import { CodePreview } from './CodePreview'
 
 interface NavMenuProps {
+  children: string
+  challengeHeaderContent: ReactElement
   challengeName: string
+  rawCodeHeader: string
 }
 
-const NavMenu = ({ children, challengeHeaderContent, challengeName, rawCodeHeader }: any) => {
+const NavMenu = ({ children, challengeHeaderContent, challengeName, rawCodeHeader }: NavMenuProps) => {
   const [modalOpen, setModalOpen] = useState(false)
   const [codeOpen, setCodeOpen] = useState(false)
 

@@ -62,7 +62,7 @@ export default function ClickCircleChallenge() {
       <main>
         <NavMenu
           challengeName="Click Circle Challenge"
-          rawCodeHeader="Click Circle Raw Code (No stylization)"
+          rawCodeHeader="Click Circle"
           challengeHeaderContent={
             <ul className='list-inside list-disc flex flex-col gap-1 marker:text-zinc-700'>
               <h4 className='font-medium text-xl'>Create an app that can:</h4>
@@ -179,7 +179,7 @@ export function ClickCircleChallenge() {
       </main >
 
       <footer className='fixed bottom-2 left-0 right-0 text-center pointer-events-none'>
-        <h4 className='text-sm'>Challenge from <Link href={"https://www.youtube.com/@fernandev1"} className="hover:text-zinc-400 duration-200 pointer-events-auto" style={{ color: color }}>@fernandev1</Link></h4>
+        <h4 className='text-sm'>Challenge from <Link href={"https://www.youtube.com/@fernandev1"} className="hover:text-zinc-400 duration-200 pointer-events-auto" style={{ color: color }} target="_blank">@fernandev1</Link></h4>
       </footer>
 
     </>
