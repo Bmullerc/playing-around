@@ -2,12 +2,11 @@ import { ReactElement } from "react"
 import { motion } from "framer-motion"
 
 interface ModalProps {
-  handleClose: () => void
   children?: ReactElement
   modalOpen?: true | false
 }
 
-export function Modal({ handleClose, children, ...rest }: ModalProps) {
+export function Modal({ children, ...rest }: ModalProps) {
 
   const dropIn = {
     hidden: {
@@ -31,18 +30,16 @@ export function Modal({ handleClose, children, ...rest }: ModalProps) {
   }
 
   return (
-    <div onClick={handleClose}>
-      <motion.div
-        onClick={(e) => e.stopPropagation()}
-        variants={dropIn}
-        initial="hidden"
-        animate="visible"
-        exit="exit"
-        {...rest}
-        className="absolute w-full rounded-3xl flex flex-col items-center justify-center z-20"
-      >
-        {children}
-      </motion.div>
-    </div>
+    <motion.div
+      onClick={(e) => e.stopPropagation()}
+      variants={dropIn}
+      initial="hidden"
+      animate="visible"
+      exit="exit"
+      {...rest}
+      className="absolute w-full rounded-3xl flex flex-col items-center justify-center z-20"
+    >
+      {children}
+    </motion.div>
   )
 }

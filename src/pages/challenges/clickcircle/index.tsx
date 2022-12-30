@@ -99,7 +99,7 @@ export default function Home() {
         </div>
         {codeOpen
           ?
-          <ShowCode handleClose={close}>
+          <ShowCode>
             <ShowCircleChallengeCode />
           </ShowCode>
           : null
@@ -107,7 +107,7 @@ export default function Home() {
 
         {modalOpen
           ?
-          <Modal handleClose={close}>
+          <Modal>
             <ClickCircleHeader />
           </Modal>
           : null
