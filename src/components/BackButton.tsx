@@ -3,8 +3,8 @@ import Link from "next/link"
 import { ArrowCircleLeft } from "phosphor-react"
 
 interface BackButtonProps {
-  modalOpen: true | false
-  codeOpen: true | false
+  modalOpen?: true | false
+  codeOpen?: true | false
 }
 
 const BackButton = ({modalOpen, codeOpen, ...rest }: BackButtonProps) => {

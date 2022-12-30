@@ -1,25 +1,12 @@
 import { useState } from 'react'
 import Head from 'next/head'
 import Link from 'next/link'
-import { Modal } from '../../../components/Modal'
-import { Code, Question, X } from "phosphor-react"
-import { motion } from "framer-motion"
-import { ShowCode } from '../../../components/ShowCode'
-import { ShowCircleChallengeCode } from '../../../components/ShowCircleChallengeCode'
-import { ClickCircleHeader } from '../../../components/ClickCircleHeader'
-import BackButton from '../../../components/BackButton'
+import NavMenu from '../../../components/NavMenu'
 
-export default function Home() {
+export default function ClickCircleChallenge() {
   const [list, setList] = useState([])
   const [deleted, setDeleted] = useState([])
   const [color, setColor] = useState("#323232")
-  const [modalOpen, setModalOpen] = useState(false)
-  const [codeOpen, setCodeOpen] = useState(false)
-
-  const close = () => setModalOpen(false)
-  const open = () => setModalOpen(true)
-  const closeCode = () => setCodeOpen(false)
-  const openCode = () => setCodeOpen(true)
 
   const handleClick = (event: React.MouseEvent<Element>) => {
     const newClick = {
@@ -73,45 +60,97 @@ export default function Home() {
       </Head>
 
       <main>
-        <div className='flex gap-2 mt-4 ml-4 z-20 fixed'>
-          <BackButton modalOpen={modalOpen} codeOpen={codeOpen}/>
+        <NavMenu
+          challengeName="Click Circle Challenge"
+          rawCodeHeader="Click Circle Raw Code (No stylization)"
+          challengeHeaderContent={
+            <ul className='list-inside list-disc flex flex-col gap-1 marker:text-zinc-700'>
+              <h4 className='font-medium text-xl'>Create an app that can:</h4>
+              <li>Be clicked anywhere inside the page</li>
+              <li>Must render a circle in the clicked position</li>
+              <li>With every click, the previous circles must be kept, and a new one should be rendered</li>
+              <li>Create two functionalities:
+                <ul className='list-inside list-disc px-4 marker:text-zinc-400'>
+                  <li>Undo</li>
+                  <li>Redo</li>
+                </ul>
+              </li>
+            </ul>
+          }>
+          {`import { useState } from 'react'
 
-          <motion.button
-            onClick={() => (modalOpen ? close() : open())}
-            disabled={codeOpen}
-            whileTap={{ scale: .9, rotate: -180 }}
-            whileHover={{ scale: 1.2, rotate: 180 }}
-            className="duration-75 bg-zinc-700 rounded-full py-1 px-1 disabled:opacity-0"
-          >
-            {modalOpen ? <X size={24} weight="bold" className="text-zinc-100" /> : <Question size={24} weight="bold" className="text-zinc-100" />}
-          </motion.button>
+export function ClickCircleChallenge() {
+  const [list, setList] = useState([])
+  const [deleted, setDeleted] = useState([])
 
-          <motion.button
-            onClick={() => (codeOpen ? closeCode() : openCode())}
-            disabled={modalOpen}
-            whileTap={{ scale: .9, rotate: -180 }}
-            whileHover={{ scale: 1.2, rotate: 180 }}
-            className="duration-75 bg-zinc-700 rounded-full py-1 px-1 disabled:opacity-0"
-          >
-            {codeOpen ? <X size={24} weight="bold" className="text-zinc-100" /> : <Code size={24} weight="bold" className="text-zinc-100" />}
-          </motion.button>
+  // The Color part is Extra Content, not required by the challenge
+  const [color, setColor] = useState("#323232")
 
-        </div>
-        {codeOpen
-          ?
-          <ShowCode>
-            <ShowCircleChallengeCode />
-          </ShowCode>
-          : null
-        }
+  const handleClick = (event) => {
+    const newClick = {
+      clientX: event.clientX,
+      clientY: event.clientY
+    }
+    setList((prev) => [...prev, newClick])
+  }
 
-        {modalOpen
-          ?
-          <Modal>
-            <ClickCircleHeader />
-          </Modal>
-          : null
-        }
+  const handleUndo = (event) => {
+    event.stopPropagation()
+
+    if (list.length === 0) return
+
+    const deletedCircle = [...list].pop()
+
+    setList((prev) => {
+      const newList = [...prev].slice(0, -1)
+      return newList
+    })
+
+    setDeleted((prev) => [...prev, deletedCircle])
+  }
+
+  const handleRedo = (event) => {
+    event.stopPropagation()
+
+    if (deleted.length === 0) return
+
+    const redoneCircle = [...deleted].pop()
+
+    setDeleted((prev) => {
+      const newList = [...prev].slice(0, -1)
+      return newList
+    })
+
+    setList((prev) => [...prev, redoneCircle])
+  }
+
+  const handleChangeColor = (event) => {
+    setColor(event.target.value)
+  }
+
+  return (
+    <section onClick={handleClick}>
+      <div>
+        <button disabled={list.length === 0} onClick={handleUndo}>
+          Undo
+        </button>
+
+        <button disabled={deleted.length === 0} onClick={handleRedo}>
+          Redo
+        </button>
+
+        <form style={{ backgroundColor: color }} onClick={(e) => e.stopPropagation()}>
+          <label htmlFor='color' style={{ color: color }}>Change Color</label>
+          <input id="color" type="color" onChange={handleChangeColor} value={color} />
+        </form>
+      </div>
+
+      {list.map((item, index) => (
+        <span key={index} style={{ left: item.clientX - 10, top: item.clientY - 10, backgroundColor: color }} />
+      ))}
+    </section>
+}`}
+        </NavMenu>
 
         <section
           onClick={handleClick}
@@ -138,9 +177,11 @@ export default function Home() {
           ))}
         </section>
       </main >
+
       <footer className='fixed bottom-2 left-0 right-0 text-center pointer-events-none'>
         <h4 className='text-sm'>Challenge from <Link href={"https://www.youtube.com/@fernandev1"} className="hover:text-zinc-400 duration-200 pointer-events-auto" style={{ color: color }}>@fernandev1</Link></h4>
       </footer>
+
     </>
   )
 }

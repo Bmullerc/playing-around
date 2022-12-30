@@ -1,6 +1,7 @@
 import Head from 'next/head'
+import NavMenu from '../../../components/NavMenu'
 
-export default function Home() {
+export default function StoplightChallenge() {
   return (
     <>
       <Head>
@@ -9,9 +10,10 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-     <main>
-      <h3>Stoplight Challenge</h3>
-     </main>
+      <main>
+        <NavMenu />
+        <h3>Stoplight Challenge</h3>
+      </main>
     </>
   )
 }

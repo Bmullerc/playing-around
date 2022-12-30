@@ -37,7 +37,7 @@ export function Modal({ children, ...rest }: ModalProps) {
       animate="visible"
       exit="exit"
       {...rest}
-      className="absolute w-full rounded-3xl flex flex-col items-center justify-center z-20"
+      className="absolute w-full flex flex-col items-center justify-center z-20"
     >
       {children}
     </motion.div>
