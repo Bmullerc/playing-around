@@ -7,7 +7,7 @@ import { motion } from "framer-motion"
 import { ShowCode } from '../../../components/ShowCode'
 import { ShowCircleChallengeCode } from '../../../components/ShowCircleChallengeCode'
 import { ClickCircleHeader } from '../../../components/ClickCircleHeader'
-
+import BackButton from '../../../components/BackButton'
 
 export default function Home() {
   const [list, setList] = useState([])
@@ -21,15 +21,15 @@ export default function Home() {
   const closeCode = () => setCodeOpen(false)
   const openCode = () => setCodeOpen(true)
 
-  const handleClick = (event) => {
+  const handleClick = (event: React.MouseEvent<Element>) => {
     const newClick = {
       clientX: event.clientX,
       clientY: event.clientY
     }
-    setList((prev) => [...prev, newClick])
+    setList((prev): any => [...prev, newClick])
   }
 
-  const handleUndo = (event) => {
+  const handleUndo = (event: React.SyntheticEvent) => {
     event.stopPropagation()
 
     if (list.length === 0) return
@@ -41,10 +41,10 @@ export default function Home() {
       return newList
     })
 
-    setDeleted((prev) => [...prev, deletedCircle])
+    setDeleted((prev): any => [...prev, deletedCircle])
   }
 
-  const handleRedo = (event) => {
+  const handleRedo = (event: React.SyntheticEvent) => {
     event.stopPropagation()
 
     if (deleted.length === 0) return
@@ -56,10 +56,10 @@ export default function Home() {
       return newList
     })
 
-    setList((prev) => [...prev, redoneCircle])
+    setList((prev): any => [...prev, redoneCircle])
   }
 
-  const handleChangeColor = (event) => {
+  const handleChangeColor = (event: React.ChangeEvent<HTMLInputElement>) => {
     setColor(event.target.value)
   }
 
@@ -74,6 +74,8 @@ export default function Home() {
 
       <main>
         <div className='flex gap-2 mt-4 ml-4 z-20 fixed'>
+          <BackButton modalOpen={modalOpen} codeOpen={codeOpen}/>
+
           <motion.button
             onClick={() => (modalOpen ? close() : open())}
             disabled={codeOpen}
@@ -93,6 +95,7 @@ export default function Home() {
           >
             {codeOpen ? <X size={24} weight="bold" className="text-zinc-100" /> : <Code size={24} weight="bold" className="text-zinc-100" />}
           </motion.button>
+
         </div>
         {codeOpen
           ?
@@ -109,8 +112,6 @@ export default function Home() {
           </Modal>
           : null
         }
-
-        {modalOpen & codeOpen ? close() & closeCode() : null}
 
         <section
           onClick={handleClick}
@@ -132,7 +133,7 @@ export default function Home() {
               <input id="color" type="color" className='hidden' onChange={handleChangeColor} value={color} />
             </form>
           </div>
-          {list.map((item, index) => (
+          {list.map((item: React.MouseEvent<Element>, index) => (
             <span key={index} className="w-6 h-6 rounded-full absolute" style={{ left: item.clientX - 10, top: item.clientY - 10, backgroundColor: color }} />
           ))}
         </section>

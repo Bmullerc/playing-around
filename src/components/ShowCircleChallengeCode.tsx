@@ -5,7 +5,7 @@ import { PreCode } from './PreCode'
 export const ShowCircleChallengeCode = () => {
   return (
     <aside className='py-2 px-4 z-20 absolute left-10 top-12 pointer-events-none'>
-      <h3 className='font-bold text-3xl mb-2'>Click Circle Raw Code</h3>
+      <h3 className='font-bold text-3xl mb-2'>Click Circle Raw Code (No stylization)</h3>
       <PreCode>{`import { useState } from 'react'
 
 export function ClickCircleChallenge() {
