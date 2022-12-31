@@ -5,7 +5,7 @@ import NavMenu from '../../../components/NavMenu'
 
 export default function StoplightChallenge() {
   const color = {
-    red: "rgb(239 68 68)",
+    red: "rgb(248 10 43)",
     yellow: "rgb(250 204 21)",
     green: "rgb(34 197 94)",
     none: "rgb(25 25 25)"
@@ -31,13 +31,13 @@ export default function StoplightChallenge() {
               <li>Have only one light lit at a time</li>
               <li>Can toggle between lights using a toggle</li>
               <li>The operator can choose which light will be lit</li>
-              <li>Questioning:
+              {/* <li>Questioning:
                 <ul className='list-inside list-decimal px-4 marker:text-zinc-400'>
                   <li>If the system receives more lights, how would the implementation happen?</li>
                   <li>If you were asked to change the color scheme, how would you do it?</li>
                   <li>If you had to think about accessibility, how would you go about it?</li>
                 </ul>
-              </li>
+              </li> */}
             </ul>
           }
         >
