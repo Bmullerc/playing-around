@@ -2,13 +2,13 @@ import Head from 'next/head'
 import Link from 'next/link'
 import { useState } from 'react'
 import NavMenu from '../../../components/NavMenu'
+import { StoplightChallengeCode } from './code'
 
 export default function StoplightChallenge() {
   const color = {
     red: "rgb(248 10 43)",
     yellow: "rgb(250 204 21)",
     green: "rgb(34 197 94)",
-    none: "rgb(25 25 25)"
   }
 
   const [litColor, setLitColor] = useState("")
@@ -41,20 +41,20 @@ export default function StoplightChallenge() {
             </ul>
           }
         >
-          {`Raw code goes here`}
+          {`Raw Code Here`}
         </NavMenu>
 
         <section>
           <div className='bg-zinc-700 rounded-md py-6 px-4 h-fit w-fit absolute flex flex-col gap-3 items-center justify-center top-0 bottom-0 m-auto left-0 right-0 z-10'>
             <span 
             onClick={() => setLitColor(color.red)}
-            className={`${litColor === color.red ? color.red : "opacity-30"} bg-red-700 h-14 w-14 rounded-full cursor-pointer`}></span>
+            className={`${ litColor === color.red ? color.red : "opacity-30" } bg - red - 700 h - 14 w - 14 rounded - full cursor - pointer`}></span>
             <span 
             onClick={() => setLitColor(color.yellow)}
-            className={`${litColor === color.yellow ? color.yellow : "opacity-30"} bg-yellow-400 h-14 w-14 rounded-full cursor-pointer`}></span>
+            className={`${ litColor === color.yellow ? color.yellow : "opacity-30" } bg - yellow - 400 h - 14 w - 14 rounded - full cursor - pointer`}></span>
             <span 
             onClick={() => setLitColor(color.green)}
-            className={`${litColor === color.green ? color.green : "opacity-30"} bg-green-500 h-14 w-14 rounded-full cursor-pointer`}></span>
+            className={`${ litColor === color.green ? color.green : "opacity-30" } bg - green - 500 h - 14 w - 14 rounded - full cursor - pointer`}></span>
           </div>
           <div className='bg-zinc-800 w-6 h-4 absolute bottom-0 m-auto left-0 right-0'></div>
           <div className='bg-zinc-800 w-10 h-4 absolute bottom-0 m-auto left-0 right-0'></div>
