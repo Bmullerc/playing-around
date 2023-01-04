@@ -17,7 +17,7 @@ const BackButton = ({ modalOpen, codeOpen, className, ...rest }: BackButtonProps
       whileTap={{ scale: .9, rotate: -360 }}
       whileHover={{ scale: 1.2, rotate: 360 }}
       onClick={() => router.back()}
-      className={`duration-100 bg-zinc-700 rounded-full py-1 px-1 disabled:opacity-0 ${className}`}
+      className={`duration-100 bg-zinc-900 rounded-full py-1 px-1 disabled:opacity-0 ${className}`}
       {...rest}
     >
       <ArrowCircleLeft size={24} weight="bold" className="text-zinc-100" />

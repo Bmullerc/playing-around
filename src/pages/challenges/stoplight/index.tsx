@@ -1,8 +1,8 @@
 import Head from 'next/head'
 import Link from 'next/link'
 import { useState } from 'react'
+import Footer from '../../../components/Footer'
 import NavMenu from '../../../components/NavMenu'
-import { StoplightChallengeCode } from './code'
 
 export default function StoplightChallenge() {
   const color = {
@@ -46,15 +46,15 @@ export default function StoplightChallenge() {
 
         <section>
           <div className='bg-zinc-700 rounded-md py-6 px-4 h-fit w-fit absolute flex flex-col gap-3 items-center justify-center top-0 bottom-0 m-auto left-0 right-0 z-10'>
-            <span 
-            onClick={() => setLitColor(color.red)}
-            className={`${ litColor === color.red ? color.red : "opacity-30" } bg - red - 700 h - 14 w - 14 rounded - full cursor - pointer`}></span>
-            <span 
-            onClick={() => setLitColor(color.yellow)}
-            className={`${ litColor === color.yellow ? color.yellow : "opacity-30" } bg - yellow - 400 h - 14 w - 14 rounded - full cursor - pointer`}></span>
-            <span 
-            onClick={() => setLitColor(color.green)}
-            className={`${ litColor === color.green ? color.green : "opacity-30" } bg - green - 500 h - 14 w - 14 rounded - full cursor - pointer`}></span>
+            <span
+              onClick={() => setLitColor(color.red)}
+              className={`${litColor === color.red ? color.red : "opacity-30"} bg-red-700 h-14 w-14 rounded-full cursor-pointer`}></span>
+            <span
+              onClick={() => setLitColor(color.yellow)}
+              className={`${litColor === color.yellow ? color.yellow : "opacity-30"} bg-yellow-400 h-14 w-14 rounded-full cursor-pointer`}></span>
+            <span
+              onClick={() => setLitColor(color.green)}
+              className={`${litColor === color.green ? color.green : "opacity-30"} bg-green-500 h-14 w-14 rounded-full cursor-pointer`}></span>
           </div>
           <div className='bg-zinc-800 w-6 h-4 absolute bottom-0 m-auto left-0 right-0'></div>
           <div className='bg-zinc-800 w-10 h-4 absolute bottom-0 m-auto left-0 right-0'></div>
@@ -64,9 +64,11 @@ export default function StoplightChallenge() {
 
       </main>
 
-      <footer className='fixed top-2 left-0 right-0 text-center pointer-events-none'>
-        <h4 className='text-sm'>Challenge from <Link href={"https://www.youtube.com/watch?v=-VwI5neksk0"} className="hover:text-zinc-400 duration-200 pointer-events-auto" target="_blank">Fredes</Link></h4>
-      </footer>
+      <Footer
+        authorName='Fredes'
+        linkFrom='https://www.youtube.com/watch?v=-VwI5neksk0'
+        style={{top: 4}}
+      />
     </>
   )
 }

@@ -4,9 +4,10 @@ import { motion } from "framer-motion"
 interface ModalProps {
   children?: ReactElement
   modalOpen?: true | false
+  hasBG?: boolean
 }
 
-export function Modal({ children, ...rest }: ModalProps) {
+export function Modal({ children, hasBG, ...rest }: ModalProps) {
 
   const dropIn = {
     hidden: {
@@ -37,7 +38,7 @@ export function Modal({ children, ...rest }: ModalProps) {
       animate="visible"
       exit="exit"
       {...rest}
-      className="absolute w-full flex flex-col items-center justify-center z-20"
+      className={`absolute w-full flex flex-col items-center justify-center z-20`}
     >
       {children}
     </motion.div>

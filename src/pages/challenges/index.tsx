@@ -21,6 +21,7 @@ export default function Home() {
             <ol className='list-inside list-decimal flex flex-col gap-2 px-4 text-lg marker:font-bold marker:italic marker:text-xl'>
               <li className='hover:text-zinc-200 duration-100'><Link href="/challenges/clickcircle">Click Circle Render</Link></li>
               <li className='hover:text-zinc-200 duration-100'><Link href="/challenges/stoplight">Stoplight</Link></li>
+              <li className='hover:text-zinc-200 duration-100'><Link href="/challenges/apistorage">API Storage</Link></li>
             </ol>
           </section>
 

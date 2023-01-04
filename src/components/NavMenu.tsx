@@ -11,9 +11,10 @@ interface NavMenuProps {
   challengeHeaderContent: ReactElement
   challengeName: string
   rawCodeHeader: string
+  hasBG?: boolean
 }
 
-const NavMenu = ({ children, challengeHeaderContent, challengeName, rawCodeHeader }: NavMenuProps) => {
+const NavMenu = ({ children, challengeHeaderContent, challengeName, rawCodeHeader, hasBG }: NavMenuProps) => {
   const [modalOpen, setModalOpen] = useState(false)
   const [codeOpen, setCodeOpen] = useState(false)
 
@@ -32,7 +33,7 @@ const NavMenu = ({ children, challengeHeaderContent, challengeName, rawCodeHeade
           disabled={codeOpen}
           whileTap={{ scale: .9, rotate: -180 }}
           whileHover={{ scale: 1.2, rotate: 180 }}
-          className="duration-75 bg-zinc-700 rounded-full py-1 px-1 disabled:opacity-0"
+          className="duration-75 bg-zinc-900 rounded-full py-1 px-1 disabled:opacity-0"
         >
           {modalOpen ? <X size={24} weight="bold" className="text-zinc-100" /> : <Question size={24} weight="bold" className="text-zinc-100" />}
         </motion.button>
@@ -42,7 +43,7 @@ const NavMenu = ({ children, challengeHeaderContent, challengeName, rawCodeHeade
           disabled={modalOpen}
           whileTap={{ scale: .9, rotate: -180 }}
           whileHover={{ scale: 1.2, rotate: 180 }}
-          className="duration-75 bg-zinc-700 rounded-full py-1 px-1 disabled:opacity-0"
+          className="duration-75 bg-zinc-900 rounded-full py-1 px-1 disabled:opacity-0"
         >
           {codeOpen ? <X size={24} weight="bold" className="text-zinc-100" /> : <Code size={24} weight="bold" className="text-zinc-100" />}
         </motion.button>
@@ -51,7 +52,7 @@ const NavMenu = ({ children, challengeHeaderContent, challengeName, rawCodeHeade
       {codeOpen
         ?
         <ShowCodeModal>
-          <CodePreview rawCodeHeader={rawCodeHeader}>
+          <CodePreview rawCodeHeader={rawCodeHeader} hasBG={hasBG}>
             {children}
           </CodePreview>
         </ShowCodeModal>
@@ -61,7 +62,7 @@ const NavMenu = ({ children, challengeHeaderContent, challengeName, rawCodeHeade
       {modalOpen
         ?
         <Modal>
-          <header className='py-2 px-4 z-20 absolute left-10 top-12 pointer-events-none'>
+          <header className={`${hasBG ? "bg-zinc-50 rounded-lg" : null} bg-opacity-90 py-2 px-4 z-20 absolute left-10 top-14 pointer-events-none`}>
             <h3 className='font-bold text-3xl mb-2'>{challengeName}</h3>
             {challengeHeaderContent}
           </header>

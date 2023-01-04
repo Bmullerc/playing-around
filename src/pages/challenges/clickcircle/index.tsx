@@ -2,6 +2,7 @@ import { useState } from 'react'
 import Head from 'next/head'
 import Link from 'next/link'
 import NavMenu from '../../../components/NavMenu'
+import Footer from '../../../components/Footer'
 
 export default function ClickCircleChallenge() {
   const [list, setList] = useState([])
@@ -178,9 +179,10 @@ export function ClickCircleChallenge() {
         </section>
       </main >
 
-      <footer className='fixed bottom-2 left-0 right-0 text-center pointer-events-none'>
-        <h4 className='text-sm'>Challenge from <Link href={"https://www.youtube.com/@fernandev1"} className="hover:text-zinc-400 duration-200 pointer-events-auto" style={{ color: color }} target="_blank">@fernandev1</Link></h4>
-      </footer>
+      <Footer
+        authorName='@fernandev1'
+        linkFrom='https://www.youtube.com/@fernandev1'
+      />
 
     </>
   )
