@@ -13,7 +13,7 @@ const BackButton = ({ modalOpen, codeOpen, className, ...rest }: BackButtonProps
 
   return (
     <motion.button
-      disabled={modalOpen === true || codeOpen === true}
+      // disabled={modalOpen === true || codeOpen === true}
       whileTap={{ scale: .9, rotate: -360 }}
       whileHover={{ scale: 1.2, rotate: 360 }}
       onClick={() => router.back()}
