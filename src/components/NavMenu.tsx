@@ -62,7 +62,7 @@ const NavMenu = ({ children, challengeHeaderContent, challengeName, rawCodeHeade
       {modalOpen
         ?
         <Modal>
-          <header className={`${hasBG ? "bg-zinc-50 rounded-lg" : null} bg-opacity-90 py-2 px-4 z-20 absolute left-10 top-14 pointer-events-none`}>
+          <header className={`${hasBG ? "bg-zinc-50 rounded-lg" : null} bg-opacity-95 py-2 px-4 z-20 absolute left-10 top-14 pointer-events-none`}>
             <h3 className='font-bold text-3xl mb-2'>{challengeName}</h3>
             {challengeHeaderContent}
           </header>

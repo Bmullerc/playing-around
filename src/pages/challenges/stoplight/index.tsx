@@ -1,5 +1,4 @@
 import Head from 'next/head'
-import Link from 'next/link'
 import { useState } from 'react'
 import Footer from '../../../components/Footer'
 import NavMenu from '../../../components/NavMenu'
@@ -45,7 +44,7 @@ export default function StoplightChallenge() {
         </NavMenu>
 
         <section>
-          <div className='bg-zinc-700 rounded-md py-6 px-4 h-fit w-fit absolute flex flex-col gap-3 items-center justify-center top-0 bottom-0 m-auto left-0 right-0 z-10'>
+          <div className='bg-zinc-800 rounded-md py-6 px-4 h-fit w-fit absolute flex flex-col gap-3 items-center justify-center top-0 bottom-0 m-auto left-0 right-0 z-10'>
             <span
               onClick={() => setLitColor(color.red)}
               className={`${litColor === color.red ? color.red : "opacity-30"} bg-red-700 h-14 w-14 rounded-full cursor-pointer`}></span>
@@ -56,9 +55,8 @@ export default function StoplightChallenge() {
               onClick={() => setLitColor(color.green)}
               className={`${litColor === color.green ? color.green : "opacity-30"} bg-green-500 h-14 w-14 rounded-full cursor-pointer`}></span>
           </div>
-          <div className='bg-zinc-800 w-6 h-4 absolute bottom-0 m-auto left-0 right-0'></div>
+          <div className='bg-zinc-700 w-4 h-[calc(50%-5rem)] absolute bottom-0 m-auto left-0 right-0'></div>
           <div className='bg-zinc-800 w-10 h-4 absolute bottom-0 m-auto left-0 right-0'></div>
-          <div className='bg-zinc-800 w-4 h-[calc(50%-5rem)] absolute bottom-0 m-auto left-0 right-0'></div>
 
         </section>
 
@@ -67,7 +65,7 @@ export default function StoplightChallenge() {
       <Footer
         authorName='Fredes'
         linkFrom='https://www.youtube.com/watch?v=-VwI5neksk0'
-        style={{top: 4}}
+        style={{ top: 4 }}
       />
     </>
   )

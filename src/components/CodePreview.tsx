@@ -4,7 +4,6 @@ interface CodePreviewProps {
   hasBG?: boolean
 }
 
-
 export const CodePreview = ({ children, rawCodeHeader, hasBG }: CodePreviewProps) => {
   return (
     <aside className={`${hasBG ? "bg-zinc-50 rounded-lg" : null} py-2 px-4 z-20 absolute left-10 top-14 pointer-events-none`}>
