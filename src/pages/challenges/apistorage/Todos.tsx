@@ -1,6 +1,13 @@
+import { motion } from "framer-motion"
+
 export default function Todos({ todos }: any) {
   return (
-    <article className="bg-stone-50 px-8 py-8">
+    <motion.article
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 1 }}
+      className="bg-stone-50 px-8 py-8">
       <h4 className="text-5xl font-bold text-center mb-6 text-stone-600">Todos</h4>
       {todos?.map((todo: any) => (
         <ul key={todo.id} className="flex gap-2 justify-between border-b border-orange-200 even:bg-gradient-to-b from-orange-50 to-orange-100 w-2/3 m-auto px-3 py-1">
@@ -14,6 +21,6 @@ export default function Todos({ todos }: any) {
           />
         </ul>
       ))}
-    </article>
+    </motion.article>
   )
 }
