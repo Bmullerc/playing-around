@@ -15,7 +15,7 @@ interface NavMenuProps {
 }
 
 const NavMenu = ({ children, challengeHeaderContent, challengeName, rawCodeHeader, hasBG }: NavMenuProps) => {
-  const [modalOpen, setModalOpen] = useState(false)
+  const [modalOpen, setModalOpen] = useState(true)
   const [codeOpen, setCodeOpen] = useState(false)
 
   const closeModal = () => setModalOpen(false)

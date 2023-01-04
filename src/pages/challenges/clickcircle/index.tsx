@@ -1,6 +1,5 @@
 import { useState } from 'react'
 import Head from 'next/head'
-import Link from 'next/link'
 import NavMenu from '../../../components/NavMenu'
 import Footer from '../../../components/Footer'
 
