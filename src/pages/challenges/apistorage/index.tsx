@@ -1,12 +1,12 @@
 import Head from 'next/head'
 import { SmileyWink } from 'phosphor-react';
 import { useEffect, useState } from 'react';
+import Albums from '../../../components/apistorage/Albums';
+import Posts from '../../../components/apistorage/Posts';
+import { rawCode } from '../../../components/apistorage/rawCode';
+import Todos from '../../../components/apistorage/Todos';
 import Footer from '../../../components/Footer'
 import NavMenu from '../../../components/NavMenu'
-import Albums from './Albums';
-import Posts from './Posts';
-import { rawCode } from './rawCode';
-import Todos from './Todos';
 
 export default function ApiStorageChallenge() {
   const [posts, setPosts] = useState([]);
