@@ -5,6 +5,7 @@ import Footer from '../../../components/Footer'
 import NavMenu from '../../../components/NavMenu'
 import Albums from './Albums';
 import Posts from './Posts';
+import { rawCode } from './rawCode';
 import Todos from './Todos';
 
 export default function ApiStorageChallenge() {
@@ -14,7 +15,7 @@ export default function ApiStorageChallenge() {
   const [isActive, setIsActive] = useState("")
 
   useEffect(() => {
-    const syncData = () => {
+    const getData = () => {
       fetch('https://jsonplaceholder.typicode.com/posts')
         .then(res => res.json())
         .then(data => {
@@ -46,7 +47,7 @@ export default function ApiStorageChallenge() {
     if (localTodos) setTodos(JSON.parse(localTodos))
 
     // Sync data from API if it's not already in local storage
-    if (!localPosts || !localAlbums || !localTodos) syncData();
+    if (!localPosts || !localAlbums || !localTodos) getData();
 
   }, []);
 
@@ -76,7 +77,7 @@ export default function ApiStorageChallenge() {
               <p>All the application should work with the initially synchronized local storage data.</p>
             </ul>
           }>
-          {`Raw Code Here`}
+          {rawCode}
         </NavMenu>
 
         <header className='flex flex-col gap-6 justify-center items-center h-96 bg-gradient-to-tl from-stone-700 to-stone-600'>

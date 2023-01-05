@@ -16,15 +16,12 @@ export default function Home() {
         <header>
           <section className='bg-zinc-300 h-screen py-20 px-20'>
             <h2 className='font-bold text-4xl mb-4'>Front-end Developer Junior</h2>
-
-            <h6 className='font-medium text-xl mb-2'>Some proposed challenges:</h6>
             <ol className='list-inside list-decimal flex flex-col gap-2 px-4 text-lg marker:font-bold marker:italic marker:text-xl'>
               <li className='hover:text-zinc-200 duration-100'><Link href="/challenges/clickcircle">Click Circle Render</Link></li>
               <li className='hover:text-zinc-200 duration-100'><Link href="/challenges/stoplight">Stoplight</Link></li>
               <li className='hover:text-zinc-200 duration-100'><Link href="/challenges/apistorage">API Storage</Link></li>
             </ol>
           </section>
-
         </header>
       </main>
     </>
