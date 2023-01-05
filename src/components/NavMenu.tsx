@@ -1,6 +1,6 @@
 import BackButton from '../components/BackButton'
 import { motion } from "framer-motion"
-import { ReactElement, useState } from 'react'
+import { ReactElement, useEffect, useState } from 'react'
 import { Modal } from './Modal'
 import { ShowCodeModal } from './ShowCodeModal'
 import { Code, Question, X } from 'phosphor-react'
@@ -22,6 +22,14 @@ const NavMenu = ({ children, challengeHeaderContent, challengeName, rawCodeHeade
   const openModal = () => setModalOpen(true)
   const closeCode = () => setCodeOpen(false)
   const openCode = () => setCodeOpen(true)
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setModalOpen(false);
+    }, 7000);
+
+    return () => clearTimeout(timer);
+  }, []);
 
   return (
     <>
