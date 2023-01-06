@@ -81,12 +81,12 @@ export default function ApiStorageChallenge() {
         </NavMenu>
 
         <header className='flex flex-col gap-6 justify-center items-center h-96 bg-gradient-to-tl from-stone-700 to-stone-600'>
-          <h2 className='text-7xl font-extrabold py-3 text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-orange-600'>Super Exciting Header Text Here</h2>
+          <h2 className='text-7xl font-extrabold py-3 text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-orange-600 drop-shadow-lg'>Super Exciting Header Text Here</h2>
           <h3 className='text-2xl font-bold text-center text-orange-50 w-1/2'>Another Exciting Thing that is a little longer, but overall it usually just serves the purpose of hyping the thing even more.</h3>
           <div className='flex gap-4'>
-            <button className='bg-orange-500 py-2 px-3 rounded-md text-stone-50 font-bold hover:bg-orange-50 hover:text-orange-600 hover:scale-95 duration-200 disabled:grayscale disabled:cursor-not-allowed' disabled={isActive === "posts"} onClick={() => setIsActive("posts")}>Posts</button>
-            <button className='bg-orange-500 py-2 px-3 rounded-md text-stone-50 font-bold hover:bg-orange-50 hover:text-orange-600 hover:scale-95 duration-200 disabled:grayscale disabled:cursor-not-allowed' disabled={isActive === "albums"} onClick={() => setIsActive("albums")}>Albums</button>
-            <button className='bg-orange-500 py-2 px-3 rounded-md text-stone-50 font-bold hover:bg-orange-50 hover:text-orange-600 hover:scale-95 duration-200 disabled:grayscale disabled:cursor-not-allowed' disabled={isActive === "todos"} onClick={() => setIsActive("todos")}>Todos</button>
+            <button className='bg-orange-500 py-2 px-3 rounded-md text-stone-50 font-bold hover:bg-orange-50 hover:text-orange-600 hover:scale-95 duration-200 disabled:grayscale disabled:cursor-not-allowed drop-shadow-md' disabled={isActive === "posts"} onClick={() => setIsActive("posts")}>Posts</button>
+            <button className='bg-orange-500 py-2 px-3 rounded-md text-stone-50 font-bold hover:bg-orange-50 hover:text-orange-600 hover:scale-95 duration-200 disabled:grayscale disabled:cursor-not-allowed drop-shadow-md' disabled={isActive === "albums"} onClick={() => setIsActive("albums")}>Albums</button>
+            <button className='bg-orange-500 py-2 px-3 rounded-md text-stone-50 font-bold hover:bg-orange-50 hover:text-orange-600 hover:scale-95 duration-200 disabled:grayscale disabled:cursor-not-allowed drop-shadow-md' disabled={isActive === "todos"} onClick={() => setIsActive("todos")}>Todos</button>
           </div>
 
         </header>
